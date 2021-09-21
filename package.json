@@ -1,0 +1,31 @@
+{
+  "name": "@cc/cybercourt-core",
+  "description": "Cc protocol",
+  "version": "1.0.0",
+  "files": [
+    "contracts",
+    "build",
+    "flatten"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "3.2.0",
+    "@openzeppelin/contracts-upgradeable": "3.4.0",
+    "@openzeppelin/upgrades": "2.8.0",
+    "@pooltogether/fixed-point": "1.0.0-beta.2",
+    "@pooltogether/uniform-random-number": "1.0.0-beta.1",
+    "@truffle/hdwallet-provider": "^1.4.1",
+    "sortition-sum-tree-factory": "0.1.0",
+    "truffle-contract-size": "^2.0.1"
+  },
+  "devDependencies": {
+    "@openzeppelin/truffle-upgrades": "^1.5.0"
+  },
+  "scripts": {
+    "clean": "rimraf ./build/ ./flatten/",
+    "precompile": "yarn clean",
+    "compile": "waffle .waffle.json && waffle flatten"
+  }
+}
