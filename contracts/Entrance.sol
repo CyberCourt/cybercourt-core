@@ -174,7 +174,7 @@ contract Entrance is Ownable, ReentrancyGuard,TokenControllerInterface {
                 JudgerOrg(judgerOrgAddr).finish(mainContract.judgerMap(j));
             }
         }
-
+        
         if (isFinished){
             emit finishExitEvent(judgerOrgAddr,mainContractOrder);
         }else{
@@ -204,10 +204,11 @@ contract Entrance is Ownable, ReentrancyGuard,TokenControllerInterface {
 
         JudgerOrg judgerOrg = judgerOrgProxyFactory.create();
         judgerOrg.initialize(address(this),address(this),msg.sender);
+        judgerOrg.setAcceptTokenMap(0x0d72F64D1173c849d440aEBd1A9732427F86f586, true, 1e16);
         GovernorAlpha governorAlpha = governorAlphaProxyFactory.create();
         governorAlpha.initialize(address(this), address(judgerOrg));
         Timelock timelock = timelockProxyFactory.create();
-        timelock.initialize(address(governorAlpha), 10);
+        timelock.initialize(address(governorAlpha), 1 days);
         judgerOrg.setOwner(address(timelock));
         governorAlpha.setTimelock(address(timelock));
 
@@ -304,7 +305,7 @@ contract Entrance is Ownable, ReentrancyGuard,TokenControllerInterface {
         // onlyContractPerson(judgerOrgAddr,mainContractOrder);
         MainContract mainContract  = mainContractMap[judgerOrgAddr][mainContractOrder];
         JudgerOrg judgerOrg = JudgerOrg(judgerOrgAddr);
-        
+
         for (uint8 j=0; j< mainContract.judgerMapNum();j++){
             JudgerOrg(judgerOrgAddr).finish(mainContract.judgerMap(j));
         }

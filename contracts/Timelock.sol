@@ -14,9 +14,9 @@ contract Timelock is Initializable{
     event ExecuteTransaction(bytes32 indexed txHash, address indexed target, uint value, string signature,  bytes data, uint eta);
     event QueueTransaction(bytes32 indexed txHash, address indexed target, uint value, string signature, bytes data, uint eta);
 
-    function gracePeriod() public pure returns (uint) { return 14 days; }
+    function gracePeriod() public pure returns (uint) { return 7 days; }
 
-    function minimumDelay() public pure returns (uint) { return 1; }
+    function minimumDelay() public pure returns (uint) { return 1 days; }
 
     function maximumDelay() public pure returns (uint) { return 30 days; }
 

@@ -262,9 +262,7 @@ contract TokenFaucet is OwnableUpgradeable {
     // must be measure and not be minting
     if (token == address(measure)) {
       drip();
-      if(to != address(0)){
-        _captureNewTokensForUser(to);
-      }
+      _captureNewTokensForUser(to);
       if(from != address(0)){
         _captureNewTokensForUser(from);
       }

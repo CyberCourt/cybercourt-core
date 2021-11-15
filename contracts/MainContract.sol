@@ -205,7 +205,7 @@ contract MainContract is OwnableUpgradeable {
         require(stakeBalance > 0,"amount can not be zero");
         require(basicInfo.status == 0 || basicInfo.status == 3 || 
         (basicInfo.applyExitBlockTime !=0 && basicInfo.applyExitBlockTime + basicInfo.exitWaitPeriodTime <= block.timestamp),"Contract has been signed or exit time has not expired");
-        
+
         contractPersonMap[sponsor].balance = contractPersonMap[sponsor].balance - stakeBalance;
         IERC20(basicInfo.token).safeTransfer(sponsor, stakeBalance);
         basicInfo.totalStake = basicInfo.totalStake - stakeBalance;

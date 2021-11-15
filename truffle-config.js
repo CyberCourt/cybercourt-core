@@ -11,9 +11,16 @@ module.exports = {
       timeoutBlocks: 200,
       skipDryRun: true
     },
-    testnet: {
-      provider: () => new HDWalletProvider(mnemonic, `https://matic-mumbai.chainstacklabs.com`),
-      network_id: 80001,
+    arbitrum: {
+      provider: () => new HDWalletProvider(mnemonic, `https://arbitrum-rinkeby.infura.io/v3/xxxx(private key)`),
+      network_id: 421611,
+      confirmations: 0,
+      timeoutBlocks: 200,
+      skipDryRun: true
+    },
+    polygon: {
+      provider: () => new HDWalletProvider(mnemonic, `https://polygon-mainnet.infura.io/v3/xxxx(private key)`),
+      network_id: 137,
       confirmations: 0,
       timeoutBlocks: 200,
       skipDryRun: true
